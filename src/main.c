@@ -474,37 +474,38 @@ int main(int argc, char * argv[])
   print_stats();
 
   /*Print Cycle Stats*/
+
   for(int c=0; c<NUM_CHANNELS; c++)
 	  for(int r=0; r<NUM_RANKS ;r++)
 		  calculate_power(c,r,0,chips_per_rank);
-
+/*
 	printf ("\n#-------------------------------------- Power Stats ----------------------------------------------\n");
 	printf ("Note:  1. termRoth/termWoth is the power dissipated in the ODT resistors when Read/Writes terminate \n");
 	printf ("          in other ranks on the same channel\n");
 	printf ("#-------------------------------------------------------------------------------------------------\n\n");
 
 
-  /*Print Power Stats*/
+  //Print Power Stats
 	float total_system_power =0;
   for(int c=0; c<NUM_CHANNELS; c++)
 	  for(int r=0; r<NUM_RANKS ;r++)
 		  total_system_power += calculate_power(c,r,1,chips_per_rank);
 
 		printf ("\n#-------------------------------------------------------------------------------------------------\n");
-	if (NUM_CHANNELS == 4) {  /* Assuming that this is 4channel.cfg  */
+	if (NUM_CHANNELS == 4) {  // Assuming that this is 4channel.cfg
 	  printf ("Total memory system power = %f W\n",total_system_power/1000);
 	  printf("Miscellaneous system power = 40 W  # Processor uncore power, disk, I/O, cooling, etc.\n");
 	  printf("Processor core power = %f W  # Assuming that each core consumes 10 W when running\n",core_power);
 	  printf("Total system power = %f W # Sum of the previous three lines\n", 40 + core_power + total_system_power/1000);
 	  printf("Energy Delay product (EDP) = %2.9f J.s\n", (40 + core_power + total_system_power/1000)*(float)((double)CYCLE_VAL/(double)3200000000) * (float)((double)CYCLE_VAL/(double)3200000000));
 	}
-	else {  /* Assuming that this is 1channel.cfg  */
+	else {  // Assuming that this is 1channel.cfg
 	  printf ("Total memory system power = %f W\n",total_system_power/1000);
-	  printf("Miscellaneous system power = 10 W  # Processor uncore power, disk, I/O, cooling, etc.\n");  /* The total 40 W misc power will be split across 4 channels, only 1 of which is being considered in the 1-channel experiment. */
-	  printf("Processor core power = %f W  # Assuming that each core consumes 5 W\n",core_power);  /* Assuming that the cores are more lightweight. */
+	  printf("Miscellaneous system power = 10 W  # Processor uncore power, disk, I/O, cooling, etc.\n");  // The total 40 W misc power will be split across 4 channels, only 1 of which is being considered in the 1-channel experiment.
+	  printf("Processor core power = %f W  # Assuming that each core consumes 5 W\n",core_power);  // Assuming that the cores are more lightweight.
 	  printf("Total system power = %f W # Sum of the previous three lines\n", 10 + core_power + total_system_power/1000);
 	  printf("Energy Delay product (EDP) = %2.9f J.s\n", (10 + core_power + total_system_power/1000)*(float)((double)CYCLE_VAL/(double)3200000000) * (float)((double)CYCLE_VAL/(double)3200000000));
 	}
-
+*/
   return 0;
 }

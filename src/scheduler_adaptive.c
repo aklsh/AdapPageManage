@@ -63,7 +63,6 @@ int sat_ctr(int channel, int is_hit, int prev_is_open){
      Output: Policy var (open/closed)
   */
   int is_open;
-  //Debug:
   if (prev_is_open){
     if(!(is_hit) && (ctr_state < 15)) ctr_state++;
     if(ctr_state[channel] >= HIGH_THRESH) is_open = 0;
